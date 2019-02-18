@@ -17,7 +17,7 @@
       <v-container fluid>
         <v-layout row>
           <v-flex xs10 offset-xs1>
-            <v-layout row>
+            <v-layout row style="margin-top: 128px; margin-bottom: 128px;">
               <v-flex xs8>
                 <router-view/>
               </v-flex>
