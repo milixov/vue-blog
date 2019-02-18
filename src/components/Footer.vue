@@ -19,12 +19,16 @@
         <h5 class="white--text">Molestie ac feugiat sed lectus vestibulum</h5>
       </v-flex>
       <v-flex style="margin-top: 64px">
-        <v-layout
-          row
-          align-center
-          style="background-color: white; border-radius: 40px; padding-left: 32px;padding-right: 16px"
-        >
-          <v-text-field light placeholder="Enter Email Address" color="black"></v-text-field>
+        <v-layout row align-center style id="m-newsletter">
+          <v-text-field
+            light
+            hide-details
+            solo
+            flat
+            background-color="transparent"
+            placeholder="Enter Email Address"
+            color="black"
+          ></v-text-field>
           <v-btn round color="#3B2EB2" dark large>Subscribe
             <v-icon dark>mdi-chevron-right</v-icon>
           </v-btn>
@@ -79,5 +83,11 @@ export default {};
 }
 #m-text {
   color: #eeeeee;
+}
+#m-newsletter {
+  background-color: white;
+  border-radius: 40px;
+  padding-left: 8px;
+  padding-right: 0px;
 }
 </style>
