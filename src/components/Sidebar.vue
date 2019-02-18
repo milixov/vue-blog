@@ -23,7 +23,7 @@ export default {};
   border-radius: 40px;
   border-width: 2px;
   border-style: solid;
-  border-color: #eeeeee;
+  border-color: #bdbdbd;
   padding-left: 8px;
   padding-right: 8px;
 }
