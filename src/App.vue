@@ -14,7 +14,21 @@
     <router-link to="/about">About</router-link>-->
     <v-container id="m-pad" fluid grid-list>
       <Header title="Our Blog" subtitle="Home - Blog"/>
-      <router-view/>
+      <v-container fluid>
+        <v-layout row>
+          <v-flex xs10 offset-xs1>
+            <v-layout row>
+              <v-flex xs8>
+                <router-view/>
+              </v-flex>
+              <v-flex xs4>
+                <Sidebar/>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout>
+      </v-container>
+
       <Footer/>
     </v-container>
   </v-app>
@@ -23,12 +37,14 @@
 <script>
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 
 export default {
   name: "App",
   components: {
     Header,
-    Footer
+    Footer,
+    Sidebar
   },
   data() {
     return {

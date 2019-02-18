@@ -7,18 +7,18 @@
       fill-height
       style="padding-top: 128px; padding-bottom: 128px"
     >
-      <v-flex xs10 offset-xs1>
+      <v-flex>
         <h1 class="white--text">Subscribe Our Newsletter</h1>
       </v-flex>
-      <v-flex xs4 offset-xs1 style="margin-top: 16px">
+      <v-flex style="margin-top: 16px">
         <h5
           class="white--text"
         >Mattis pellentesque id nibh tortor id aliquet lectus proin. Sapien faucibus</h5>
       </v-flex>
-      <v-flex xs4 offset-xs1>
+      <v-flex>
         <h5 class="white--text">Molestie ac feugiat sed lectus vestibulum</h5>
       </v-flex>
-      <v-flex xs6 offset-xs1 style="margin-top: 64px">
+      <v-flex style="margin-top: 64px">
         <v-layout
           row
           align-center
