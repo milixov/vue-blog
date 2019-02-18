@@ -22,13 +22,12 @@
                 <router-view/>
               </v-flex>
               <v-flex xs4>
-                <Sidebar/>
+                <Sidebar :categoryList="categories"/>
               </v-flex>
             </v-layout>
           </v-flex>
         </v-layout>
       </v-container>
-
       <Footer/>
     </v-container>
   </v-app>
@@ -46,11 +45,14 @@ export default {
     Footer,
     Sidebar
   },
-  data() {
-    return {
-      //
-    };
-  }
+  data: () => ({
+    categories: [
+      { id: "1a", title: "Mattis" },
+      { id: "2a", title: "Pellentesque" },
+      { id: "3a", title: "Aliquet" },
+      { id: "4a", title: "Sapien Faucibus" }
+    ]
+  })
 };
 </script>
 

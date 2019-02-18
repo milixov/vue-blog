@@ -10,12 +10,20 @@
           append-icon="mdi-magnify"
         ></v-text-field>
       </v-flex>
+      <Category :data="categoryList"/>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-export default {};
+import Category from "./Category";
+
+export default {
+  props: { categoryList: Array },
+  components: {
+    Category
+  }
+};
 </script>
 
 <style>
