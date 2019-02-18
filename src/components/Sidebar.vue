@@ -11,7 +11,7 @@
         ></v-text-field>
       </v-flex>
       <Category :data="categoryList"/>
-      <LatestPost :data="categoryList"/>
+      <LatestPost :data="postList"/>
     </v-layout>
   </v-container>
 </template>
@@ -21,7 +21,7 @@ import Category from "./Category";
 import LatestPost from "./LatestPost";
 
 export default {
-  props: { categoryList: Array },
+  props: { categoryList: Array, postList: Array },
   components: {
     Category,
     LatestPost

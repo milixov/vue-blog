@@ -3,9 +3,26 @@
     <v-layout column style="padding-top: 64px">
       <h3>Latest Posts</h3>
       <v-flex style="padding-top: 16px">
-        <div v-for="n in data" :key="n">
-          <v-btn flat round>{{n.title}}</v-btn>
-          <v-divider></v-divider>
+        <div v-for="n in data" :key="n" style="margin-bottom: 16px">
+          <v-layout row>
+            <v-flex shrink>
+              <v-img
+                height="72"
+                width="72px"
+                :src="`https://picsum.photos/72/72?image=10`"
+                aspect-ratio="1"
+                class="grey lighten-2"
+              />
+            </v-flex>
+            <v-flex xs10 offset-xs1 grow style="margin-left: 8px">
+              <v-layout column fill-height>
+                <v-flex grow>
+                  <h3>{{n.title}}</h3>
+                </v-flex>
+                <h5 shrink style="color: #BDBDBD">{{n.date}}</h5>
+              </v-layout>
+            </v-flex>
+          </v-layout>
         </div>
       </v-flex>
     </v-layout>

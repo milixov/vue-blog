@@ -2,7 +2,7 @@
   <v-container fluid pa-0>
     <v-layout column style="padding-top: 64px">
       <h3>Categories</h3>
-      <v-flex style="padding-top: 16px">
+      <v-flex xs8 style="padding-top: 16px">
         <div v-for="n in data" :key="n">
           <v-btn flat round>{{n.title}}</v-btn>
           <v-divider></v-divider>

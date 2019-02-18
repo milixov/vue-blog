@@ -22,7 +22,7 @@
                 <router-view/>
               </v-flex>
               <v-flex xs4>
-                <Sidebar :categoryList="categories"/>
+                <Sidebar :categoryList="categories" :postList="latestPost"/>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -51,6 +51,28 @@ export default {
       { id: "2a", title: "Pellentesque" },
       { id: "3a", title: "Aliquet" },
       { id: "4a", title: "Sapien Faucibus" }
+    ],
+    latestPost: [
+      {
+        id: "1p",
+        title: "If the provided aspect ratio doesn't match",
+        date: "Post 30, March 18"
+      },
+      {
+        id: "2p",
+        title: "If the provided aspect ratio doesn't match",
+        date: "Post 30, March 18"
+      },
+      {
+        id: "3p",
+        title: "If the provided aspect ratio doesn't match",
+        date: "Post 30, March 18"
+      },
+      {
+        id: "4p",
+        title: "If the provided aspect ratio doesn't match",
+        date: "Post 30, March 18"
+      }
     ]
   })
 };
