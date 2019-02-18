@@ -1,8 +1,34 @@
 <template>
   <v-container fluid id="m-foot" pa-0>
-    <v-layout row>
+    <v-layout
+      align-center
+      justify-center
+      column
+      fill-height
+      style="padding-top: 128px; padding-bottom: 128px"
+    >
       <v-flex xs10 offset-xs1>
-        <p>Footer</p>
+        <h1 class="white--text">Subscribe Our Newsletter</h1>
+      </v-flex>
+      <v-flex xs4 offset-xs1 style="margin-top: 16px">
+        <h5
+          class="white--text"
+        >Mattis pellentesque id nibh tortor id aliquet lectus proin. Sapien faucibus</h5>
+      </v-flex>
+      <v-flex xs4 offset-xs1>
+        <h5 class="white--text">Molestie ac feugiat sed lectus vestibulum</h5>
+      </v-flex>
+      <v-flex xs6 offset-xs1 style="margin-top: 64px">
+        <v-layout
+          row
+          align-center
+          style="background-color: white; border-radius: 40px; padding-left: 32px;padding-right: 16px"
+        >
+          <v-text-field light placeholder="Enter Email Address" color="black"></v-text-field>
+          <v-btn round color="#3B2EB2" dark large>Subscribe
+            <v-icon dark>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-layout>
       </v-flex>
     </v-layout>
     <v-layout row id="m-lane">
