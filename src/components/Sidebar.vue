@@ -1,6 +1,6 @@
 <template>
   <v-container fluid pa-0>
-    <v-layout column>
+    <v-layout column style="margin-top: 40px">
       <v-flex id="m-search">
         <v-text-field
           single-line

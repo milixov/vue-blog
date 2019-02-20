@@ -21,9 +21,9 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <!-- <v-layout row wrap align-center justify-center>
+    <v-layout row wrap align-center justify-center>
       <v-pagination v-model="page" :length="15" :total-visible="7" circle flat></v-pagination>
-    </v-layout>-->
+    </v-layout>
   </v-container>
 </template>
 
