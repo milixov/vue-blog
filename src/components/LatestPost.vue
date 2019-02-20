@@ -8,8 +8,8 @@
             <v-flex shrink>
               <v-img
                 height="72"
-                width="72px"
-                :src="`https://picsum.photos/72/72?image=10`"
+                width="72"
+                :src="`https://unsplash.it/72/72?image=${Math.floor(Math.random() * 100) + 1}`"
                 aspect-ratio="1"
                 class="grey lighten-2"
               />
