@@ -15,23 +15,10 @@
       <p>component is a malleable piece of paper that can be morphed to facilitate other components. In this example we utilize custom color, theme (dark/light) and size.</p>
     </v-layout>
     <v-layout row>
-      <v-flex xs6 wrap style="border-radius: 6px">
-        <v-layout row>
-          <v-avatar style="border-radius: 6px; margin-right: 4px" color="#0D47A1" v-ripple>
-            <v-icon dark>mdi-facebook</v-icon>
-          </v-avatar>
-          <v-avatar style="border-radius: 6px; margin-right: 4px" color="#42A5F5" v-ripple>
-            <v-icon dark>mdi-twitter</v-icon>
-          </v-avatar>
-          <v-avatar style="border-radius: 6px; margin-right: 4px" color="#1565C0" v-ripple>
-            <v-icon dark>mdi-linkedin</v-icon>
-          </v-avatar>
-          <v-avatar style="border-radius: 6px; margin-right: 4px" color="#0097A7" v-ripple>
-            <v-icon dark>mdi-vimeo</v-icon>
-          </v-avatar>
-        </v-layout>
+      <v-flex shrink wrap style="border-radius: 6px">
+        <SocialShare :url="milad"/>
       </v-flex>
-      <v-flex xs6>
+      <v-flex grow>
         <v-layout row align-center wrap>
           <h4>Tags</h4>
           <v-btn outline small color="grey">Button</v-btn>
@@ -50,16 +37,27 @@
           class="grey lighten-2"
         />
       </v-flex>
-      <v-flex grow style="margin-left: 8px">
-        <v-layout column fill-height wrap>
+      <v-flex grow>
+        <v-layout column fill-height>
           <h2>hi</h2>
           <h4 style="color: #BDBDBD">mili</h4>
 
-          <p
-            style="margin-top: 16px"
-          >component is a malleable piece of paper that can be morphed to facilitate other components. In this example we utilize custom color, theme (dark/light) and size</p>
+          <h5 style="margin-top: 16px">
+            component is a malleable piece of paper that can be morphed to facilitate other components.
+            In this example we utilize custom color, theme (dark/light) and size
+          </h5>
         </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
+<script>
+import SocialShare from "../components/SocialShare";
+
+export default {
+  components: {
+    SocialShare
+  }
+};
+</script>

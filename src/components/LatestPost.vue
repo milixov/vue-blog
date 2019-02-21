@@ -3,7 +3,7 @@
     <v-layout column style="padding-top: 64px">
       <h3>Latest Posts</h3>
       <v-flex style="padding-top: 16px">
-        <div v-for="n in data" :key="n" style="margin-bottom: 16px">
+        <div v-for="n in data" :key="n.id" style="margin-bottom: 16px">
           <v-layout row>
             <v-flex shrink>
               <v-img

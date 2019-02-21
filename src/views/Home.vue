@@ -2,7 +2,7 @@
   <v-container fluid grid-list-sm>
     <v-layout row wrap>
       <v-flex v-for="i in 6" :key="i" xs6>
-        <v-card style="margin: 16px" raised hover ripple to="about">
+        <v-card style="margin: 16px" raised hover ripple :to="`post?id=${i}`">
           <v-img
             height="280"
             :src="`https://unsplash.it/72/72?image=${Math.floor(Math.random() * 100) + 1}`"

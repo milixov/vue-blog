@@ -3,7 +3,7 @@
     <v-layout column style="padding-top: 64px">
       <h3>Categories</h3>
       <v-flex xs8 style="padding-top: 16px">
-        <div v-for="n in data" :key="n">
+        <div v-for="n in data" :key="n.id">
           <v-btn flat round>{{n.title}}</v-btn>
           <v-divider></v-divider>
         </div>
