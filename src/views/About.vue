@@ -14,35 +14,16 @@
     <v-layout wrap column style="margin-top: 32px">
       <p>component is a malleable piece of paper that can be morphed to facilitate other components. In this example we utilize custom color, theme (dark/light) and size.</p>
     </v-layout>
-    <v-layout row>
-      <v-flex grow wrap style="border-radius: 6px">
-        <SocialShare :url="milad"/>
+    <v-layout row style="margin-bottom: 32px; margin-top: 32px">
+      <v-flex grow wrap>
+        <SocialShare :url="url"/>
       </v-flex>
       <v-flex shrink>
         <Tag :data="tags"/>
       </v-flex>
     </v-layout>
-    <v-layout align-center row style="margin-top: 64px">
-      <v-flex shrink>
-        <v-img
-          height="180"
-          width="180"
-          :src="`https://unsplash.it/180/180?image=${Math.floor(Math.random() * 100) + 1}`"
-          aspect-ratio="1"
-          class="grey lighten-2"
-        />
-      </v-flex>
-      <v-flex grow>
-        <v-layout column fill-height>
-          <h2>hi</h2>
-          <h4 style="color: #BDBDBD">mili</h4>
-
-          <h5 style="margin-top: 16px">
-            component is a malleable piece of paper that can be morphed to facilitate other components.
-            In this example we utilize custom color, theme (dark/light) and size
-          </h5>
-        </v-layout>
-      </v-flex>
+    <v-layout wrap>
+      <Author/>
     </v-layout>
   </v-container>
 </template>
@@ -50,14 +31,17 @@
 <script>
 import SocialShare from "../components/SocialShare";
 import Tag from "../components/Tag";
+import Author from "../components/Author";
 
 export default {
   data: () => ({
+    url: "Hi",
     tags: [{ id: "1a", title: "Mattis" }, { id: "3a", title: "Aliquet" }]
   }),
   components: {
     SocialShare,
-    Tag
+    Tag,
+    Author
   }
 };
 </script>
