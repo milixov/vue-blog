@@ -25,6 +25,9 @@
     <v-layout wrap>
       <Author/>
     </v-layout>
+    <v-layout wrap style="margin-top: 64px">
+      <Comment/>
+    </v-layout>
   </v-container>
 </template>
 
@@ -32,6 +35,7 @@
 import SocialShare from "../components/SocialShare";
 import Tag from "../components/Tag";
 import Author from "../components/Author";
+import Comment from "../components/Comment";
 
 export default {
   data: () => ({
@@ -41,7 +45,8 @@ export default {
   components: {
     SocialShare,
     Tag,
-    Author
+    Author,
+    Comment
   }
 };
 </script>
