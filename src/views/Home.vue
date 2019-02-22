@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-sm>
     <v-layout row wrap>
-      <v-flex v-for="i in 6" :key="i" xs6>
+      <v-flex v-for="n in data" :key="n.slug" xs6>
         <v-card style="margin: 16px" raised hover ripple :to="`post?id=${i}`">
           <v-img
             height="280"
@@ -11,28 +11,61 @@
 
           <v-card-title primary-title>
             <div>
-              <div class="headline">Top western road trips</div>
-              <span class="grey--text">1,000 miles of wonder</span>
-              <div
-                style="margin-top: 16px"
-              >Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque.</div>
+              <div class="headline">{{n.title}}</div>
+              <span class="grey--text">{{"By: " + n.author.username + ", Date: " + n.createdAt}}</span>
+              <div style="margin-top: 16px">{{n.description}}</div>
             </div>
           </v-card-title>
         </v-card>
       </v-flex>
     </v-layout>
     <v-layout row wrap align-center justify-center>
-      <v-pagination v-model="page" :length="15" :total-visible="7" circle flat></v-pagination>
+      <v-pagination v-model="page" :length="total" :total-visible="5" circle flat></v-pagination>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import axios from "axios";
+import moment from "moment";
+
 export default {
-  data() {
-    return {
-      page: 1
-    };
+  data: () => ({
+    page: 1,
+    total: null,
+    count: 6,
+    data: [],
+    erros: []
+  }),
+  created() {
+    axios
+      .get(
+        `${this.$store.getters.url}/articles?limit=6&offset=${this.count *
+          (this.page - 1)}`,
+        {
+          headers: { Authorization: this.$store.state.token }
+        }
+      )
+      .then(response => {
+        this.data = response.data.articles;
+        let div = response.data.articlesCount / 6;
+        let rem = response.data.articlesCount % 6;
+        this.total = div;
+        if (rem > 0) {
+          this.total++;
+        }
+
+        this.data.map(
+          item =>
+            (item.createdAt = moment(
+              item.createdAt,
+              "YYYY-MM-DDTHH:mm:ss.SSSZ"
+            ).format("D MMMM YYYY"))
+        );
+      })
+      .catch(e => {
+        this.erros.push(e);
+      });
   }
 };
 </script>

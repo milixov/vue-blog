@@ -22,7 +22,7 @@
                 <router-view/>
               </v-flex>
               <v-flex xs4>
-                <Sidebar :categoryList="categories" :postList="latestPost"/>
+                <Sidebar/>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
@@ -46,35 +48,24 @@ export default {
     Sidebar
   },
   data: () => ({
-    categories: [
-      { id: "1a", title: "Mattis" },
-      { id: "2a", title: "Pellentesque" },
-      { id: "3a", title: "Aliquet" },
-      { id: "4a", title: "Sapien Faucibus" }
-    ],
-    latestPost: [
-      {
-        id: "1p",
-        title: "If the provided aspect ratio doesn't match",
-        date: "Post 30, March 18"
-      },
-      {
-        id: "2p",
-        title: "If the provided aspect ratio doesn't match",
-        date: "Post 30, March 18"
-      },
-      {
-        id: "3p",
-        title: "If the provided aspect ratio doesn't match",
-        date: "Post 30, March 18"
-      },
-      {
-        id: "4p",
-        title: "If the provided aspect ratio doesn't match",
-        date: "Post 30, March 18"
-      }
-    ]
-  })
+    erros: [],
+    postBody: {
+      email: "admin@vue.com",
+      password: "Aa1234567"
+    }
+  }),
+  created() {
+    axios
+      .post(`${this.$store.getters.url}/users/login`, {
+        user: this.postBody
+      })
+      .then(response => {
+        this.$store.commit("setToken", response.data.user.token);
+      })
+      .catch(e => {
+        this.erros.push(e);
+      });
+  }
 };
 </script>
 
