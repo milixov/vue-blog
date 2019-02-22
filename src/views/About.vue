@@ -15,16 +15,11 @@
       <p>component is a malleable piece of paper that can be morphed to facilitate other components. In this example we utilize custom color, theme (dark/light) and size.</p>
     </v-layout>
     <v-layout row>
-      <v-flex shrink wrap style="border-radius: 6px">
+      <v-flex grow wrap style="border-radius: 6px">
         <SocialShare :url="milad"/>
       </v-flex>
-      <v-flex grow>
-        <v-layout row align-center wrap>
-          <h4>Tags</h4>
-          <v-btn outline small color="grey">Button</v-btn>
-          <v-btn outline small color="grey">Outline</v-btn>
-          <v-btn outline small color="grey">Gray</v-btn>
-        </v-layout>
+      <v-flex shrink>
+        <Tag :data="tags"/>
       </v-flex>
     </v-layout>
     <v-layout align-center row style="margin-top: 64px">
@@ -54,10 +49,15 @@
 
 <script>
 import SocialShare from "../components/SocialShare";
+import Tag from "../components/Tag";
 
 export default {
+  data: () => ({
+    tags: [{ id: "1a", title: "Mattis" }, { id: "3a", title: "Aliquet" }]
+  }),
   components: {
-    SocialShare
+    SocialShare,
+    Tag
   }
 };
 </script>
