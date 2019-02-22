@@ -4,25 +4,27 @@
       <h3>Latest Posts</h3>
       <v-flex style="padding-top: 16px">
         <div v-for="n in data" :key="n.slug" style="margin-bottom: 16px">
-          <v-layout row>
-            <v-flex shrink>
-              <v-img
-                height="72"
-                width="72"
-                :src="`https://unsplash.it/72/72?image=${Math.floor(Math.random() * 100) + 1}`"
-                aspect-ratio="1"
-                class="grey lighten-2"
-              />
-            </v-flex>
-            <v-flex xs10 offset-xs1 grow style="margin-left: 8px">
-              <v-layout column fill-height>
-                <v-flex grow>
-                  <h3>{{n.title}}</h3>
-                </v-flex>
-                <h5 shrink style="color: #BDBDBD">{{"Post " + n.createdAt}}</h5>
-              </v-layout>
-            </v-flex>
-          </v-layout>
+          <v-card hover flat style="background-color: transparent" :to="`post?slug=${n.slug}`">
+            <v-layout row>
+              <v-flex shrink>
+                <v-img
+                  height="72"
+                  width="72"
+                  :src="`https://unsplash.it/72/72?image=${Math.floor(Math.random() * 100) + 1}`"
+                  aspect-ratio="1"
+                  class="grey lighten-2"
+                />
+              </v-flex>
+              <v-flex xs10 offset-xs1 grow style="margin-left: 8px">
+                <v-layout column fill-height>
+                  <v-flex grow>
+                    <h3>{{n.title}}</h3>
+                  </v-flex>
+                  <h5 shrink style="color: #BDBDBD">{{"Post " + n.createdAt}}</h5>
+                </v-layout>
+              </v-flex>
+            </v-layout>
+          </v-card>
         </div>
       </v-flex>
     </v-layout>

@@ -10,7 +10,8 @@ export default new Vuex.Store({
     host: "localhost",
     port: "3000",
     app: "api",
-    token: null
+    token: null,
+    tag: null
   },
   mutations: {
     setToken: (state, value) => {
@@ -20,5 +21,9 @@ export default new Vuex.Store({
   getters: {
     url: state => `${state.protocol}://${state.host}:${state.port}/${state.app}`
   },
-  actions: {}
+  actions: {
+    setTag: (state, value) => {
+      state.tag = value;
+    }
+  }
 });

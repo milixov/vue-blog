@@ -2,7 +2,7 @@
   <v-container fluid grid-list-sm>
     <v-layout row wrap>
       <v-flex v-for="n in data" :key="n.slug" xs6>
-        <v-card style="margin: 16px" raised hover ripple :to="`post?id=${i}`">
+        <v-card style="margin: 16px" raised hover ripple :to="`post?slug=${n.slug}`">
           <v-img
             height="280"
             :src="`https://unsplash.it/72/72?image=${Math.floor(Math.random() * 100) + 1}`"
@@ -20,7 +20,14 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap align-center justify-center>
-      <v-pagination v-model="page" :length="total" :total-visible="5" circle flat></v-pagination>
+      <v-pagination
+        @input="onPageChange"
+        v-model="page"
+        :length="total"
+        :total-visible="5"
+        circle
+        flat
+      ></v-pagination>
     </v-layout>
   </v-container>
 </template>
@@ -37,35 +44,42 @@ export default {
     data: [],
     erros: []
   }),
-  created() {
-    axios
-      .get(
-        `${this.$store.getters.url}/articles?limit=6&offset=${this.count *
-          (this.page - 1)}`,
-        {
-          headers: { Authorization: this.$store.state.token }
-        }
-      )
-      .then(response => {
-        this.data = response.data.articles;
-        let div = response.data.articlesCount / 6;
-        let rem = response.data.articlesCount % 6;
-        this.total = div;
-        if (rem > 0) {
-          this.total++;
-        }
+  methods: {
+    onPageChange(page) {
+      var tag =
+        this.$store.state.tag !== null ? "&tag=" + this.$store.state.tag : "";
+      axios
+        .get(
+          `${this.$store.getters.url}/articles?limit=6&offset=${this.count *
+            (this.page - 1)}${tag}`,
+          {
+            headers: { Authorization: this.$store.state.token }
+          }
+        )
+        .then(response => {
+          this.data = response.data.articles;
+          let div = response.data.articlesCount / 6;
+          let rem = response.data.articlesCount % 6;
+          this.total = div;
+          if (rem > 0) {
+            this.total++;
+          }
 
-        this.data.map(
-          item =>
-            (item.createdAt = moment(
-              item.createdAt,
-              "YYYY-MM-DDTHH:mm:ss.SSSZ"
-            ).format("D MMMM YYYY"))
-        );
-      })
-      .catch(e => {
-        this.erros.push(e);
-      });
+          this.data.map(
+            item =>
+              (item.createdAt = moment(
+                item.createdAt,
+                "YYYY-MM-DDTHH:mm:ss.SSSZ"
+              ).format("D MMMM YYYY"))
+          );
+        })
+        .catch(e => {
+          this.erros.push(e);
+        });
+    }
+  },
+  created() {
+    this.onPageChange(this.page);
   }
 };
 </script>
