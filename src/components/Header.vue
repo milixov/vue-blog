@@ -8,7 +8,7 @@
             <v-icon x-large dark>mdi-blogger</v-icon>
           </v-flex>
           <v-flex shrink>
-            <v-btn flat round color="white">Home</v-btn>
+            <v-btn flat round color="white" to="/">Home</v-btn>
             <v-btn flat round color="white">About</v-btn>
             <v-btn flat round color="white">Screen</v-btn>
             <v-btn flat round color="white">Contact</v-btn>

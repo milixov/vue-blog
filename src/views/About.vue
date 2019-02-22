@@ -1,8 +1,11 @@
 <template>
   <v-container fluid grid-list-sm style="padding-top: 34px">
     <v-layout wrap column>
-      <h1>This is an about page</h1>
-      <h5 shrink style="color: #BDBDBD">Sheets can accept a custom elevation</h5>
+      <h1>{{data.title}}</h1>
+      <h5
+        shrink
+        style="color: #BDBDBD"
+      >{{"By: " + data.author.username + ", Date: " + data.createdAt}}</h5>
       <v-img
         style="margin-top: 32px"
         height="400"
@@ -12,18 +15,23 @@
       />
     </v-layout>
     <v-layout wrap column style="margin-top: 32px">
-      <p>component is a malleable piece of paper that can be morphed to facilitate other components. In this example we utilize custom color, theme (dark/light) and size.</p>
+      <p>{{data.body}}</p>
     </v-layout>
     <v-layout row style="margin-bottom: 32px; margin-top: 32px">
       <v-flex grow wrap>
         <SocialShare :url="url"/>
       </v-flex>
       <v-flex shrink>
-        <Tag :data="tags"/>
+        <Tag :data="data.tagList"/>
       </v-flex>
     </v-layout>
     <v-layout wrap>
-      <Author/>
+      <Author
+        :image="data.author.image"
+        :title="data.author.username"
+        subtitle="CEO"
+        desc="Lorem Text"
+      />
     </v-layout>
     <v-layout wrap style="margin-top: 64px">
       <Comment/>
@@ -32,6 +40,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import SocialShare from "../components/SocialShare";
 import Tag from "../components/Tag";
 import Author from "../components/Author";
@@ -39,14 +49,28 @@ import Comment from "../components/Comment";
 
 export default {
   data: () => ({
-    url: "Hi",
-    tags: [{ id: "1a", title: "Mattis" }, { id: "3a", title: "Aliquet" }]
+    url: null,
+    data: null
   }),
   components: {
     SocialShare,
     Tag,
     Author,
     Comment
+  },
+  created() {
+    this.url = this.$store.getters.source + this.$route.fullPath;
+
+    axios
+      .get(`${this.$store.getters.url}/articles/${this.$route.query.slug}`, {
+        headers: { Authorization: this.$store.state.token }
+      })
+      .then(response => {
+        this.data = response.data.article;
+      })
+      .catch(e => {
+        this.erros.push(e);
+      });
   }
 };
 </script>

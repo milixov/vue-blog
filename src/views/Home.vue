@@ -46,12 +46,10 @@ export default {
   }),
   methods: {
     onPageChange(page) {
-      var tag =
-        this.$store.state.tag !== null ? "&tag=" + this.$store.state.tag : "";
       axios
         .get(
           `${this.$store.getters.url}/articles?limit=6&offset=${this.count *
-            (this.page - 1)}${tag}`,
+            (this.page - 1)}`,
           {
             headers: { Authorization: this.$store.state.token }
           }

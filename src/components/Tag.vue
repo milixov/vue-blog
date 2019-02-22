@@ -2,8 +2,8 @@
   <v-layout row align-center>
     <h4>Tags</h4>
     <v-layout id="m-marg-l" row align-center>
-      <div v-for="n in data" :key="n.id">
-        <v-btn outline small color="grey">{{n.title}}</v-btn>
+      <div v-for="n in data" :key="n">
+        <v-btn outline small color="grey">{{n}}</v-btn>
       </div>
     </v-layout>
   </v-layout>
